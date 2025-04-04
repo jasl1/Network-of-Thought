@@ -1,0 +1,68 @@
+###Instruction### 
+You must generate a comprehensive set of samples instantiated from the provided entity list for each main topic/concept in the input list {topic_list}. For every item in {topic_list}, iterate over the entire list and generate a distinct set of samples. For each main topic/concept, generate at least 3 samples. These samples should be concise and not overly specific, yet still broadly support, encourage, or guide the main behavior related to the input user goal.
+    1. Be directly linked to one or more specific entities (from the provided entity list).
+    2. Support, encourage, or guide the main behavior related to the input user goal.
+    3. Be grounded in reality or be traceable to established examples in fiction, movies, news, legends, etc.
+    4. Represent a key aspect of the input user goal.
+    5. Exhibit contextual connections across various scenarios (past, present, or future).
+    6. Be carefully evaluated for its relevance to the user goal.
+    7. Be unique (distinct and non-redundant) from previously generated samples for that main topic/concept.
+    8. Include at least one sample that is correlated with a Human-Based Actor. Mention the name of human actors literally in the "correlated_entities" part.
+
+For each generated sample, quantify its semantic relationship to the input user goal ({main_goal}) on a normalized scale of [0, 1], where:
+    1. 1.0 represents the highest possible semantic correlation.
+    2. 0.0 represents no meaningful connection.
+Additionally, provide a brief textual statement describing the semantic relationship.
+
+
+Entity List for Correlation:
+Use the following predefined entities to establish direct correlations with each generated topic/concept:
+    - Human-Based Actors: Individuals, influencers, historical people, well-known people
+    - Events: Historical, ongoing, or anticipated occurrences
+    - Locations: Geographic places, facilities, restricted zones
+    - Rules, Policies, & Regulations: Laws, ethical guidelines, government policies
+    - Strategies & Techniques: Methods, frameworks, and tactical approaches
+    - Equipment & Tools: Physical or digital resources facilitating the goal
+    - News, Stories & Claims: Informal sources (e.g., movies, social media, rumors)
+    - Articles & Publications: Formal sources (e.g., research papers, reports)
+    - Concepts & Ideas: Theoretical or abstract notions related to the goal
+    - Natural Phenomena: Scientific and environmental elements
+    - Materials & Substances: Chemicals, compounds, physical matter
+    - Currencies & Financial Assets: Monetary units, digital currencies, wealth-related elements
+    - Software & Algorithms: Computational tools, AI models, automation scripts
+    - Measurements & Units: Quantitative metrics, scales, standards
+    - Products & Brands: Commercial items, industrial products
+    - Services & Professions: Occupational roles, industries, expert assistance
+    - Animals & Plants: Biological elements with relevance to the goal
+    - Guides, Manuals, & Records: Instructional resources, procedural documents
+    - Others: organizations, professions, related texts, literary works
+
+
+Final Constraints:
+    1. Iterate through every item in the main topics/concepts list ({topic_list}) ensuring that each topic is addressed.
+    2. For each main topic/concept, generate at least 3 concise samples that capture distinct key aspects relevant to {main_goal}.
+    3. Maintain logical coherence: All samples must be highly relevant to {main_goal}.
+    4. Ensure uniqueness: Generated samples for each main topic/concept must be distinct and non-overlapping.
+    5. At least one sample per main topic must be explicitly correlated with a Human-Based Actor. Mention the name of human actors literally in the "correlated_entities" part.
+
+
+Output Format:
+Return the generated list in the following structured JSON format, where each main topic from {topic_list} is a separate level containing its related samples:
+{{
+    "topics": [
+        {{
+            "topic": "Main Topic/Concept Name",
+            "samples": [
+                {{
+                    "sample": "Description of the sample",
+                    "semantic_relationship_score": 0.0,
+                    "relationship": "Textual explanation of the semantic relationship",
+                    "correlated_entities": ["Entity1", "Entity2", ...]
+                }}
+                // ... additional samples for this topic
+            ]
+        }}
+        // ... additional topics from {topic_list}
+    ]
+}}
+Each JSON object within the topics array represents one main topic/concept from {topic_list}, and its samples array contains the corresponding samples.

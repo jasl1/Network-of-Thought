@@ -1,0 +1,55 @@
+###Instruction### 
+You need to generate a new dynamic and contextually relevant list of main topics/concepts that are semantically correlated with the given input user goal. Each topic/concept must be directly linked to one or more specific entities (from the provided entity list) and must support, encourage, or guide main behavior of the user goal.
+Additionally, given the previously gathered list of main topics/concepts ({topic_list}), you must ensure that the new list does not contain any overlapping topics/concepts from the previous one. All newly generated topics must be distinct and non-redundant while still being relevant to the input user goal.
+
+Each topic/concept should:
+    1. Represent a key aspect of the input user goal.
+    2. Have contextual connections and common ground across various scenarios (past, present, or future).
+    3. Be carefully evaluated for its relevance to the user goal.
+    4. Be unique from previously generated topics ({topic_list}).
+
+
+Additionally, For each generated topic/concept, quantify its semantic relationship to the input user goal ({main_goal}) on a normalized scale of [0, 1], where:
+    1. 1.0 represents the highest possible semantic correlation.
+    2. 0.0 represents no meaningful connection.
+Moreover provide a textual statement of the semantic relationship in a sentence. 
+
+Entity List for Correlation:
+Use the following predefined entities to establish direct correlations with each generated topic/concept:
+    - Human-Based Actors: Individuals, influencers, historical people, well-known people
+    - Events: Historical, ongoing, or anticipated occurrences
+    - Locations: Geographic places, facilities, restricted zones
+    - Rules, Policies, & Regulations: Laws, ethical guidelines, government policies
+    - Strategies & Techniques: Methods, frameworks, and tactical approaches
+    - Equipment & Tools: Physical or digital resources facilitating the goal
+    - News, Stories & Claims: Informal sources (e.g., movies, social media, rumors)
+    - Articles & Publications: Formal sources (e.g., research papers, reports)
+    - Concepts & Ideas: Theoretical or abstract notions related to the goal
+    - Natural Phenomena: Scientific and environmental elements
+    - Materials & Substances: Chemicals, compounds, physical matter
+    - Currencies & Financial Assets: Monetary units, digital currencies, wealth-related elements
+    - Software & Algorithms: Computational tools, AI models, automation scripts
+    - Measurements & Units: Quantitative metrics, scales, standards
+    - Products & Brands: Commercial items, industrial products
+    - Services & Professions: Occupational roles, industries, expert assistance
+    - Animals & Plants: Biological elements with relevance to the goal
+    - Guides, Manuals, & Records: Instructional resources, procedural documents
+    - Others: organizations, professions, related texts, literary works
+
+Ensure that each generated topic/concept is:
+    1. Highly specific to the user’s main intent.
+    2. Logically grounded in a real-world or conceptual framework.
+    3. Clearly correlated with one or more entities from the provided list.
+
+Final Constraints:
+    1. Ensure topic diversity: New topics must be substantively different from already generated list ({topic_list}).
+    2. Maintain logical coherence: Topics should still be highly relevant to the input user goal ({main_goal}).
+    3. Generate distinct, non-overlapping concepts in each iteration
+
+Return the generated list in the following structured JSON format.
+{{
+        "topic": "",
+        "semantic_relationship_score": ,
+        "relationship": "",
+        "correlated_entities": []
+}}
